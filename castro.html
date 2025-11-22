@@ -1,0 +1,440 @@
+import React, { useState } from 'react';
+import { Mail, Phone, Linkedin, Github, FileText, Code, Lightbulb, ExternalLink } from 'lucide-react';
+
+export default function Portfolio() {
+  const [currentPage, setCurrentPage] = useState('home');
+
+  const navigation = [
+    { id: 'home', label: 'HOME' },
+    { id: 'skills', label: 'SKILLS' },
+    { id: 'projects', label: 'PROJECTS' },
+    { id: 'about', label: 'ABOUT' },
+    { id: 'contact', label: 'CONTACT' }
+  ];
+
+  const skills = {
+    technical: [
+      'HTML/CSS/JavaScript',
+      'React & Node.js',
+      'Python Programming',
+      'Database Management',
+      'Git & Version Control',
+      'Responsive Web Design'
+    ],
+    soft: [
+      'Problem Solving',
+      'Team Collaboration',
+      'Communication',
+      'Time Management',
+      'Adaptability',
+      'Critical Thinking'
+    ]
+  };
+
+  const projects = [
+    {
+      title: 'Project Sample 1',
+      description: 'A full-stack web application built with React and Node.js featuring real-time data processing and user authentication.',
+      image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=600&fit=crop',
+      link: '#'
+    },
+    {
+      title: 'Project Sample 2',
+      description: 'Mobile-responsive e-commerce platform with shopping cart functionality, payment integration, and admin dashboard.',
+      image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=600&fit=crop',
+      link: '#'
+    },
+    {
+      title: 'Project Sample 3',
+      description: 'Data visualization dashboard using D3.js and React to display complex datasets with interactive charts and graphs.',
+      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop',
+      link: '#'
+    }
+  ];
+
+  const renderPage = () => {
+    switch(currentPage) {
+      case 'home':
+        return (
+          <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 px-4">
+            <div className="max-w-4xl w-full grid md:grid-cols-2 gap-8 items-center">
+              <div className="space-y-6">
+                <h1 className="text-5xl font-bold text-gray-800 leading-tight">
+                  Greetings!
+                </h1>
+                <div className="space-y-4 text-gray-600">
+                  <p className="text-lg">
+                    I'm <span className="font-semibold text-indigo-600">Edward Benedict P. Castro</span>
+                  </p>
+                  <p className="text-base leading-relaxed">
+                    A passionate developer and computer engineering student dedicated to creating 
+                    innovative solutions through code. I specialize in web development and 
+                    software engineering.
+                  </p>
+                  <p className="text-base leading-relaxed">
+                    Welcome to my portfolio where you can explore my skills, projects, and 
+                    professional journey.
+                  </p>
+                </div>
+                <div className="flex gap-4 pt-4">
+                  <button 
+                    onClick={() => setCurrentPage('projects')}
+                    className="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition-all shadow-md hover:shadow-lg"
+                  >
+                    View My Work
+                  </button>
+                  <button 
+                    onClick={() => setCurrentPage('about')}
+                    className="bg-white text-indigo-600 px-6 py-3 rounded-lg hover:bg-gray-50 transition-all shadow-md border-2 border-indigo-600"
+                  >
+                    Learn More
+                  </button>
+                </div>
+              </div>
+              <div className="flex justify-center">
+                <div className="w-64 h-64 bg-gradient-to-br from-indigo-400 to-blue-500 rounded-3xl shadow-2xl flex items-center justify-center">
+                  <span className="text-white text-6xl font-bold">EBC</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+
+      case 'skills':
+        return (
+          <div className="min-h-screen bg-gray-50 py-16 px-4">
+            <div className="max-w-6xl mx-auto">
+              <h1 className="text-4xl font-bold text-center text-gray-800 mb-12">Skills</h1>
+              <div className="grid md:grid-cols-3 gap-8">
+                <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
+                  <div className="flex items-center gap-3 mb-6">
+                    <Code className="w-8 h-8 text-indigo-600" />
+                    <h2 className="text-2xl font-bold text-gray-800">Technical</h2>
+                  </div>
+                  <ul className="space-y-3">
+                    {skills.technical.map((skill, idx) => (
+                      <li key={idx} className="flex items-start gap-2 text-gray-700">
+                        <span className="text-indigo-600 mt-1">•</span>
+                        <span>{skill}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
+                  <div className="flex items-center gap-3 mb-6">
+                    <Lightbulb className="w-8 h-8 text-indigo-600" />
+                    <h2 className="text-2xl font-bold text-gray-800">Soft Skills</h2>
+                  </div>
+                  <ul className="space-y-3">
+                    {skills.soft.map((skill, idx) => (
+                      <li key={idx} className="flex items-start gap-2 text-gray-700">
+                        <span className="text-indigo-600 mt-1">•</span>
+                        <span>{skill}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
+                  <div className="flex items-center gap-3 mb-6">
+                    <FileText className="w-8 h-8 text-indigo-600" />
+                    <h2 className="text-2xl font-bold text-gray-800">Resume</h2>
+                  </div>
+                  <div className="space-y-4 text-gray-700">
+                    <p>Download my complete resume to learn more about my experience and qualifications.</p>
+                    <button className="w-full bg-indigo-600 text-white px-4 py-3 rounded-lg hover:bg-indigo-700 transition-all mt-4 flex items-center justify-center gap-2">
+                      <FileText className="w-5 h-5" />
+                      Download Resume
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div className="flex justify-center gap-4 mt-12">
+                <button 
+                  onClick={() => setCurrentPage('projects')}
+                  className="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition-all shadow-md"
+                >
+                  View Projects
+                </button>
+                <button 
+                  onClick={() => setCurrentPage('contact')}
+                  className="bg-white text-indigo-600 px-6 py-3 rounded-lg hover:bg-gray-50 transition-all shadow-md border-2 border-indigo-600"
+                >
+                  Get in Touch
+                </button>
+              </div>
+            </div>
+          </div>
+        );
+
+      case 'projects':
+        return (
+          <div className="min-h-screen bg-gray-50 py-16 px-4">
+            <div className="max-w-6xl mx-auto">
+              <h1 className="text-4xl font-bold text-center text-gray-800 mb-12">Projects</h1>
+              <div className="grid md:grid-cols-3 gap-8">
+                {projects.map((project, idx) => (
+                  <div key={idx} className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <div className="h-48 bg-gray-200 overflow-hidden">
+                      <img 
+                        src={project.image} 
+                        alt={project.title}
+                        className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                      />
+                    </div>
+                    <div className="p-6">
+                      <h3 className="text-xl font-bold text-gray-800 mb-3">{project.title}</h3>
+                      <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                        {project.description}
+                      </p>
+                      <a 
+                        href={project.link}
+                        className="inline-flex items-center gap-2 text-indigo-600 hover:text-indigo-700 font-medium"
+                      >
+                        View Project <ExternalLink className="w-4 h-4" />
+                      </a>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="flex justify-center gap-4 mt-12">
+                <button 
+                  onClick={() => setCurrentPage('skills')}
+                  className="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition-all shadow-md"
+                >
+                  View Skills
+                </button>
+                <button 
+                  onClick={() => setCurrentPage('contact')}
+                  className="bg-white text-indigo-600 px-6 py-3 rounded-lg hover:bg-gray-50 transition-all shadow-md border-2 border-indigo-600"
+                >
+                  Contact Me
+                </button>
+              </div>
+            </div>
+          </div>
+        );
+
+      case 'about':
+        return (
+          <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-16 px-4">
+            <div className="max-w-4xl mx-auto">
+              <h1 className="text-4xl font-bold text-center text-gray-800 mb-12">About Me</h1>
+              <div className="bg-white rounded-lg shadow-xl p-8 md:p-12">
+                <div className="grid md:grid-cols-2 gap-8 items-center">
+                  <div className="order-2 md:order-1 space-y-4">
+                    <h2 className="text-3xl font-bold text-gray-800">
+                      Edward Benedict P. Castro
+                    </h2>
+                    <p className="text-gray-600 leading-relaxed">
+                      I am a dedicated Computer Engineering student at [Your University], 
+                      currently enrolled in CEEL 301 under Prof. Laurice Mariquina.
+                    </p>
+                    <p className="text-gray-600 leading-relaxed">
+                      My passion lies in creating innovative technological solutions and 
+                      developing software that makes a difference. I specialize in web 
+                      development, with expertise in modern frameworks and best practices.
+                    </p>
+                    <p className="text-gray-600 leading-relaxed">
+                      Throughout my academic journey, I've worked on various projects that 
+                      showcase my technical abilities and problem-solving skills. I'm always 
+                      eager to learn new technologies and take on challenging projects.
+                    </p>
+                    <p className="text-gray-600 leading-relaxed">
+                      When I'm not coding, I enjoy exploring new technologies, contributing 
+                      to open-source projects, and staying updated with the latest industry trends.
+                    </p>
+                  </div>
+                  <div className="order-1 md:order-2 flex justify-center">
+                    <div className="w-64 h-64 bg-gradient-to-br from-indigo-400 to-blue-500 rounded-2xl shadow-xl overflow-hidden">
+                      <div className="w-full h-full flex items-center justify-center">
+                        <span className="text-white text-7xl font-bold">EP</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="flex justify-center gap-4 mt-12">
+                <button 
+                  onClick={() => setCurrentPage('projects')}
+                  className="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition-all shadow-md"
+                >
+                  View Projects
+                </button>
+                <button 
+                  onClick={() => setCurrentPage('contact')}
+                  className="bg-white text-indigo-600 px-6 py-3 rounded-lg hover:bg-gray-50 transition-all shadow-md border-2 border-indigo-600"
+                >
+                  Get in Touch
+                </button>
+              </div>
+            </div>
+          </div>
+        );
+
+      case 'contact':
+        return (
+          <div className="min-h-screen bg-gray-50 py-16 px-4">
+            <div className="max-w-4xl mx-auto">
+              <h1 className="text-4xl font-bold text-center text-gray-800 mb-12">Contact Me</h1>
+              <div className="grid md:grid-cols-3 gap-6">
+                <div className="bg-white rounded-lg shadow-lg p-8 hover:shadow-xl transition-shadow text-center">
+                  <div className="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Mail className="w-8 h-8 text-indigo-600" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-800 mb-3">Email</h3>
+                  <a 
+                    href="mailto:edward.castro@example.com" 
+                    className="text-indigo-600 hover:text-indigo-700 break-words"
+                  >
+                    edward.castro@example.com
+                  </a>
+                  <p className="text-gray-600 text-sm mt-3">
+                    Send me an email anytime
+                  </p>
+                </div>
+
+                <div className="bg-white rounded-lg shadow-lg p-8 hover:shadow-xl transition-shadow text-center">
+                  <div className="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Phone className="w-8 h-8 text-indigo-600" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-800 mb-3">Phone</h3>
+                  <a 
+                    href="tel:+1234567890" 
+                    className="text-indigo-600 hover:text-indigo-700"
+                  >
+                    +63 (XXX) XXX-XXXX
+                  </a>
+                  <p className="text-gray-600 text-sm mt-3">
+                    Call me for urgent inquiries
+                  </p>
+                </div>
+
+                <div className="bg-white rounded-lg shadow-lg p-8 hover:shadow-xl transition-shadow text-center">
+                  <div className="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Linkedin className="w-8 h-8 text-indigo-600" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-800 mb-3">LinkedIn</h3>
+                  <a 
+                    href="https://linkedin.com/in/yourprofile" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-indigo-600 hover:text-indigo-700"
+                  >
+                    Connect with me
+                  </a>
+                  <p className="text-gray-600 text-sm mt-3">
+                    Let's network professionally
+                  </p>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-lg shadow-lg p-8 mt-8">
+                <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Send a Message</h2>
+                <form className="space-y-4">
+                  <div>
+                    <label className="block text-gray-700 font-medium mb-2">Name</label>
+                    <input 
+                      type="text" 
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-600 focus:border-transparent"
+                      placeholder="Your name"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-gray-700 font-medium mb-2">Email</label>
+                    <input 
+                      type="email" 
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-600 focus:border-transparent"
+                      placeholder="your.email@example.com"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-gray-700 font-medium mb-2">Message</label>
+                    <textarea 
+                      rows="4"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-600 focus:border-transparent"
+                      placeholder="Your message here..."
+                    ></textarea>
+                  </div>
+                  <button 
+                    type="submit"
+                    className="w-full bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition-all shadow-md"
+                  >
+                    Send Message
+                  </button>
+                </form>
+              </div>
+
+              <div className="flex justify-center gap-4 mt-12">
+                <button 
+                  onClick={() => setCurrentPage('home')}
+                  className="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition-all shadow-md"
+                >
+                  Back to Home
+                </button>
+                <button 
+                  onClick={() => setCurrentPage('projects')}
+                  className="bg-white text-indigo-600 px-6 py-3 rounded-lg hover:bg-gray-50 transition-all shadow-md border-2 border-indigo-600"
+                >
+                  View Projects
+                </button>
+              </div>
+            </div>
+          </div>
+        );
+
+      default:
+        return null;
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-white">
+      {/* Navigation */}
+      <nav className="bg-white shadow-md sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="flex justify-between items-center h-16">
+            <div className="text-2xl font-bold text-indigo-600">PORTFOLIO</div>
+            <div className="flex gap-1">
+              {navigation.map(item => (
+                <button
+                  key={item.id}
+                  onClick={() => setCurrentPage(item.id)}
+                  className={`px-4 py-2 rounded-lg transition-all ${
+                    currentPage === item.id
+                      ? 'bg-indigo-600 text-white'
+                      : 'text-gray-700 hover:bg-gray-100'
+                  }`}
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      {/* Page Content */}
+      {renderPage()}
+
+      {/* Footer */}
+      <footer className="bg-gray-800 text-white py-8">
+        <div className="max-w-7xl mx-auto px-4 text-center">
+          <p className="mb-4">&copy; 2024 Edward Benedict P. Castro. All rights reserved.</p>
+          <div className="flex justify-center gap-6">
+            <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" className="hover:text-indigo-400 transition-colors">
+              <Github className="w-6 h-6" />
+            </a>
+            <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" className="hover:text-indigo-400 transition-colors">
+              <Linkedin className="w-6 h-6" />
+            </a>
+            <a href="mailto:edward.castro@example.com" className="hover:text-indigo-400 transition-colors">
+              <Mail className="w-6 h-6" />
+            </a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
